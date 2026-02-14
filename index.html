@@ -1,360 +1,269 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>林イタリアン | HAYASHI ITALIAN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        /* --- CSS変数（色設定） --- */
-        :root {
-            --bg-color: #0a0a0a;       /* 高級な黒 */
-            --text-main: #f0f0f0;      /* オフホワイト */
-            --accent-gold: #c5a059;    /* シャンパンゴールド */
-            --accent-red: #5d001e;     /* ディープボルドー */
-            --font-jp: 'Shippori Mincho', serif;
-            --font-en: 'Playfair Display', serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* --- 基本設定 --- */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-jp);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
+<!-- SEO基本 -->
+<title>林イタリアン｜東京都港区の隠れ家イタリアンレストラン</title>
+<meta name="description" content="東京都港区の隠れ家イタリアン「林イタリアン」。黒を基調とした空間で、和牛や黒トリュフを使用したコース料理と厳選ワインをご提供します。ご予約受付中。">
+<meta name="keywords" content="林イタリアン, 港区 イタリアン, 高級レストラン, ディナー, ワインペアリング">
+<link rel="canonical" href="https://example.com/">
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; padding: 0; }
+<!-- OGP -->
+<meta property="og:title" content="林イタリアン｜東京都港区の隠れ家イタリアン">
+<meta property="og:description" content="黒を基調とした上質な空間で味わう本格イタリアン。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="https://example.com/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
-        /* --- 背景装飾（ボルドーの光） --- */
-        .bg-glow {
-            position: fixed;
-            top: -10%;
-            right: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, var(--accent-red) 0%, transparent 70%);
-            opacity: 0.2;
-            z-index: -1;
-            pointer-events: none;
-        }
+<!-- フォント -->
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-        /* --- ヘッダー --- */
-        header {
-            padding: 2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-            position: sticky;
-            top: 0;
-            background: rgba(10, 10, 10, 0.95);
-            z-index: 100;
-        }
+<style>
+:root {
+--bg-color:#0a0a0a;
+--text-main:#f0f0f0;
+--accent-gold:#c5a059;
+--accent-red:#5d001e;
+--font-jp:'Shippori Mincho',serif;
+--font-en:'Playfair Display',serif;
+}
 
-        .logo {
-            font-family: var(--font-en);
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-            letter-spacing: 0.1em;
-        }
+body{
+margin:0;
+background:var(--bg-color);
+color:var(--text-main);
+font-family:var(--font-jp);
+line-height:1.8;
+}
 
-        nav ul {
-            display: flex;
-            gap: 2rem;
-        }
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;padding:0;margin:0;}
 
-        nav li {
-            cursor: pointer;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            position: relative;
-        }
+header{
+padding:2rem 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid rgba(197,160,89,0.2);
+}
 
-        nav li::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0%;
-            height: 1px;
-            background-color: var(--accent-gold);
-            transition: width 0.3s;
-        }
+.logo{
+font-family:var(--font-en);
+font-size:1.8rem;
+color:var(--accent-gold);
+}
 
-        nav li:hover::after, nav li.active::after {
-            width: 100%;
-        }
+nav ul{
+display:flex;
+gap:2rem;
+}
 
-        /* --- ページコンテンツ共通 --- */
-        main {
-            min-height: 80vh;
-            position: relative;
-            padding: 4rem 5%;
-        }
+nav a{
+font-size:0.9rem;
+letter-spacing:0.1em;
+}
 
-        .page-section {
-            display: none; /* デフォルトは非表示 */
-            animation: fadeIn 0.8s ease-out forwards;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+main{
+padding:4rem 5%;
+max-width:1000px;
+margin:auto;
+}
 
-        .page-section.active {
-            display: block;
-        }
+h1{
+font-family:var(--font-en);
+font-size:2.5rem;
+color:var(--accent-gold);
+text-align:center;
+margin-bottom:2rem;
+}
 
-        h1.page-title {
-            font-family: var(--font-en);
-            font-size: 3rem;
-            color: var(--accent-gold);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
+h2{
+font-size:1.2rem;
+margin:0;
+}
 
-        h1.page-title span {
-            display: block;
-            font-size: 1rem;
-            font-family: var(--font-jp);
-            margin-top: 0.5rem;
-            color: var(--text-main);
-            opacity: 0.7;
-        }
+.hero{
+text-align:center;
+margin-bottom:4rem;
+}
 
-        /* --- アニメーション --- */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.hero-img{
+width:100%;
+height:300px;
+background:linear-gradient(45deg,#1a1a1a,#2a2a2a);
+margin-bottom:2rem;
+}
 
-        /* --- ページ別スタイル --- */
-        
-        /* HOME */
-        .hero {
-            text-align: center;
-            padding: 5rem 0;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        .hero-img-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            border: 1px solid var(--accent-gold);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-img-placeholder::before {
-            content: 'Image Area';
-            color: var(--accent-gold);
-            opacity: 0.5;
-            font-family: var(--font-en);
-        }
+.menu-item{
+display:flex;
+justify-content:space-between;
+border-bottom:1px solid rgba(255,255,255,0.1);
+padding:1.5rem 0;
+}
 
-        /* MENU */
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 1.5rem 0;
-            margin-bottom: 1rem;
-        }
-        .menu-name { font-size: 1.2rem; }
-        .menu-price { color: var(--accent-gold); font-family: var(--font-en); }
-        .menu-desc { font-size: 0.9rem; color: #aaa; margin-top: 0.5rem; }
+.menu-desc{
+font-size:0.9rem;
+color:#aaa;
+}
 
-        /* ACCESS */
-        .access-info {
-            text-align: center;
-            border: 1px solid var(--accent-gold);
-            padding: 3rem;
-            position: relative;
-        }
-        .access-info::before {
-            content: '';
-            position: absolute;
-            top: 5px; left: 5px; right: 5px; bottom: 5px;
-            border: 1px solid rgba(197, 160, 89, 0.3);
-        }
+.menu-price{
+color:var(--accent-gold);
+font-family:var(--font-en);
+}
 
-        /* CONTACT */
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .form-group { margin-bottom: 2rem; }
-        label { display: block; margin-bottom: 0.5rem; color: var(--accent-gold); }
-        input, textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #333;
-            color: #fff;
-            font-family: var(--font-jp);
-            transition: 0.3s;
-        }
-        input:focus, textarea:focus {
-            border-color: var(--accent-gold);
-            outline: none;
-            background: rgba(197, 160, 89, 0.05);
-        }
-        button.submit-btn {
-            background: var(--accent-gold);
-            color: #000;
-            padding: 1rem 3rem;
-            border: none;
-            cursor: pointer;
-            font-family: var(--font-en);
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            display: block;
-            margin: 2rem auto 0;
-            transition: 0.3s;
-        }
-        button.submit-btn:hover {
-            background: #fff;
-        }
+.access-box{
+border:1px solid var(--accent-gold);
+padding:2rem;
+text-align:center;
+margin-top:2rem;
+}
 
-        /* --- フッター --- */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.8rem;
-            color: #666;
-            border-top: 1px solid #222;
-        }
-    </style>
+form{
+max-width:600px;
+margin:auto;
+}
+
+label{
+display:block;
+margin-bottom:0.5rem;
+color:var(--accent-gold);
+}
+
+input,textarea{
+width:100%;
+padding:1rem;
+margin-bottom:1.5rem;
+background:#111;
+border:1px solid #333;
+color:#fff;
+}
+
+button{
+background:var(--accent-gold);
+color:#000;
+padding:1rem 2rem;
+border:none;
+cursor:pointer;
+}
+
+footer{
+text-align:center;
+padding:2rem;
+font-size:0.8rem;
+color:#666;
+border-top:1px solid #222;
+margin-top:4rem;
+}
+</style>
+
+<!-- 構造化データ -->
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"Restaurant",
+"name":"林イタリアン",
+"servesCuisine":"Italian",
+"priceRange":"¥¥¥¥",
+"address":{
+"@type":"PostalAddress",
+"streetAddress":"架空町1-2-3",
+"addressLocality":"港区",
+"addressRegion":"東京都",
+"postalCode":"100-0000",
+"addressCountry":"JP"
+}
+}
+</script>
+
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+<header>
+<div class="logo">HAYASHI ITALIAN</div>
+<nav>
+<ul>
+<li><a href="#home">HOME</a></li>
+<li><a href="#menu">MENU</a></li>
+<li><a href="#access">ACCESS</a></li>
+<li><a href="#contact">CONTACT</a></li>
+</ul>
+</nav>
+</header>
 
-    <header>
-        <div class="logo">HAYASHI ITALIAN</div>
-        <nav>
-            <ul>
-                <li onclick="showPage('home')" class="active" id="nav-home">HOME</li>
-                <li onclick="showPage('menu')" id="nav-menu">MENU</li>
-                <li onclick="showPage('access')" id="nav-access">ACCESS</li>
-                <li onclick="showPage('contact')" id="nav-contact">CONTACT</li>
-            </ul>
-        </nav>
-    </header>
+<main>
 
-    <main>
-        <section id="home" class="page-section active">
-            <div class="hero">
-                <div class="hero-img-placeholder">
-                    </div>
-                <h1 class="page-title">Essence of Darkness<br><span>静寂と美食の隠れ家</span></h1>
-                <p>
-                    林イタリアンへようこそ。<br>
-                    五感を研ぎ澄ます、漆黒の空間。<br>
-                    厳選された素材と技が織りなす、至高の一皿をご堪能ください。
-                </p>
-            </div>
-        </section>
+<section id="home">
+<div class="hero">
+<div class="hero-img"></div>
+<h1>林イタリアン<br><span style="font-size:1rem;color:#aaa;">東京都港区の隠れ家イタリアン</span></h1>
+<p>
+黒を基調とした静かな空間で、厳選食材を使ったコース料理をご提供します。
+</p>
+</div>
+</section>
 
-        <section id="menu" class="page-section">
-            <h1 class="page-title">Cuisine<span>お料理</span></h1>
-            
-            <div class="menu-item">
-                <div>
-                    <div class="menu-name">シェフのおまかせコース "Nero"</div>
-                    <div class="menu-desc">旬の黒トリュフと和牛を使用した、当店のシグネチャーコース。</div>
-                </div>
-                <div class="menu-price">¥ 18,000</div>
-            </div>
+<section id="menu">
+<h1>お料理</h1>
 
-            <div class="menu-item">
-                <div>
-                    <div class="menu-name">季節のコース "Stagione"</div>
-                    <div class="menu-desc">その日仕入れた新鮮な魚介と有機野菜のマリアージュ。</div>
-                </div>
-                <div class="menu-price">¥ 12,000</div>
-            </div>
+<div class="menu-item">
+<div>
+<h2>シェフのおまかせコース "Nero"</h2>
+<p class="menu-desc">旬の黒トリュフと和牛を使用したシグネチャーコース。</p>
+</div>
+<div class="menu-price">¥18,000</div>
+</div>
 
-            <div class="menu-item">
-                <div>
-                    <div class="menu-name">ワインペアリング</div>
-                    <div class="menu-desc">ソムリエが厳選した、料理を引き立てる5杯。</div>
-                </div>
-                <div class="menu-price">¥ 8,000</div>
-            </div>
-        </section>
+<div class="menu-item">
+<div>
+<h2>季節のコース "Stagione"</h2>
+<p class="menu-desc">新鮮な魚介と有機野菜のコース。</p>
+</div>
+<div class="menu-price">¥12,000</div>
+</div>
 
-        <section id="access" class="page-section">
-            <h1 class="page-title">Access<span>店舗情報</span></h1>
-            <div class="access-info">
-                <h3>HAYASHI ITALIAN</h3>
-                <p>〒100-0000<br>東京都港区架空町 1-2-3 ラグジュアリービル B1</p>
-                <br>
-                <p style="color:var(--accent-gold);">OPEN</p>
-                <p>18:00 - 23:00 (L.O. 21:00)</p>
-                <br>
-                <p style="color:var(--accent-gold);">CLOSE</p>
-                <p>月曜日・第一火曜日</p>
-            </div>
-        </section>
+<div class="menu-item">
+<div>
+<h2>ワインペアリング</h2>
+<p class="menu-desc">料理に合わせた厳選5杯。</p>
+</div>
+<div class="menu-price">¥8,000</div>
+</div>
 
-        <section id="contact" class="page-section">
-            <h1 class="page-title">Contact<span>ご予約・お問い合わせ</span></h1>
-            <form onsubmit="event.preventDefault(); alert('送信シミュレーション完了');">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" placeholder="お名前">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="メールアドレス">
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea rows="5" placeholder="ご質問・ご要望など"></textarea>
-                </div>
-                <button class="submit-btn">SEND MESSAGE</button>
-            </form>
-        </section>
-    </main>
+</section>
 
-    <footer>
-        &copy; 2026 HAYASHI ITALIAN. All Rights Reserved.
-    </footer>
+<section id="access">
+<h1>店舗情報</h1>
+<div class="access-box">
+<p>〒100-0000 東京都港区架空町1-2-3</p>
+<p>18:00 - 23:00（L.O.21:00）</p>
+<p>定休日：月曜日・第一火曜日</p>
+</div>
+</section>
 
-    <script>
-        // ページ切り替え用スクリプト
-        function showPage(pageId) {
-            // すべてのセクションを非表示
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+<section id="contact">
+<h1>ご予約・お問い合わせ</h1>
+<form>
+<label>お名前</label>
+<input type="text">
 
-            // すべてのナビゲーションのアクティブ状態を解除
-            const navItems = document.querySelectorAll('nav li');
-            navItems.forEach(item => {
-                item.classList.remove('active');
-            });
+<label>メールアドレス</label>
+<input type="email">
 
-            // 指定されたページを表示
-            document.getElementById(pageId).classList.add('active');
-            
-            // ナビゲーションをアクティブにする
-            document.getElementById('nav-' + pageId).classList.add('active');
+<label>メッセージ</label>
+<textarea rows="5"></textarea>
 
-            // ページトップへスクロール（アニメーションが見えるように）
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-    </script>
+<button type="submit">送信する</button>
+</form>
+</section>
+
+</main>
+
+<footer>
+© 2026 HAYASHI ITALIAN
+</footer>
+
 </body>
 </html>
